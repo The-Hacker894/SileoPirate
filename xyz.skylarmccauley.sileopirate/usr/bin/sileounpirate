@@ -1,0 +1,50 @@
+#!/bin/sh 
+
+clear
+VER="0.1"
+echo "sileounpirate v$VER"
+
+SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
+
+if [[ $EUID -ne 0 ]]; then
+        echo "Please run this script as root!" 
+        exit 1
+fi
+
+
+if [ -d /sileopirate/sileo-string-backup ]; then
+    rm -rf /sileopirate/sileo-string-backup
+fi
+
+cd /sileopirate
+echo "" && echo ""
+
+echo "Aye matey! Welcome to SileoUnPirate! This script restoring ye backup of Sileo Pirate Strings."
+read -p "Would ye like to continue? [Y/N] " -n 1 -r
+        echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Unzippin' ye backup..."
+        if [ ! -f ./sileo-string-backup.zip ]; then
+            echo "Aye matey, it seems your backup has been taken by Th' Kracken."
+            read -p "Press [Enter] to continue..." fackEnterKey 
+            exit 1;
+        fi
+        unzip -o sileo-string-backup.zip
+        echo "Ya har har! Ye backup be unzipped!"
+        echo "Blowin' Sileo down..."
+        killall Sileo
+        echo "Forcin' ye modified strings to walk the plank"
+        rm -fv "$SILEOSTRINGS/Localizable.stringsdict"
+        rm -fv "$SILEOSTRINGS/Localizable.strings"
+        rm -fv "$SILEOSTRINGS/Errors.strings"
+        rm -fv "$SILEOSTRINGS/Categories.strings"
+        echo "Raidin' th' Sileo folder..."
+        cp -fv /sileopirate/sileo-string-backup/Categories.strings $SILEOSTRINGS
+        cp -fv /sileopirate/sileo-string-backup/Errors.strings $SILEOSTRINGS
+        cp -fv /sileopirate/sileo-string-backup/Localizable.strings $SILEOSTRINGS
+        cp -fv /sileopirate/sileo-string-backup/Localizable.stringsdict $SILEOSTRINGS
+        echo "Aye! Sileo now be reverted back to its original form. Back to work, lads!"
+        exit 1
+    else
+        exit 1
+    fi

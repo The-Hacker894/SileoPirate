@@ -1,0 +1,68 @@
+#!/bin/sh 
+
+clear
+VER="0.1"
+echo "sileopirate v$VER"
+
+SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
+
+if [[ $EUID -ne 0 ]]; then
+        echo "Please run this script as root!" 
+        exit 1
+fi
+
+if [ ! -d /sileopirate/data/pirate_strings ]; then
+    echo "/sileopirate/data/pirate_strings does not exist? Reinstall SileoPirate"
+    exit 1;
+fi
+if [ -d /sileopirate/sileo-string-backup ]; then
+    rm -rf /sileopirate/sileo-string-backup
+fi
+if [ ! -d /sileopirate/sileo-string-backup ]; then
+    mkdir /sileopirate/sileo-string-backup
+fi
+cd /sileopirate
+echo "" && echo ""
+
+echo "Aye matey! Welcome to SileoPirate! This script be replacin' ye Sileo string files, but no before creatin' a backup first. Wouldn't want ye strings to end up in Davy Jones' locker."
+read -p "Would ye like to continue? [Y/N] " -n 1 -r
+        echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        if [ -f ./sileo-string-backup.zip ]; then
+            echo "Arrrr! A backup already exists."
+            read -p " Would ye like to create another one? [Y/N] " -n 1 -r
+                    echo    # (optional) move to a new line
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    echo "Creatin' ye backup in /sileopirate"
+                    cp -fv "$SILEOSTRINGS/Localizable.stringsdict" /sileopirate/sileo-string-backup
+                    cp -fv "$SILEOSTRINGS/Localizable.strings" /sileopirate/sileo-string-backup
+                    cp -fv "$SILEOSTRINGS/Errors.strings" /sileopirate/sileo-string-backup
+                    cp -fv "$SILEOSTRINGS/Categories.strings" /sileopirate/sileo-string-backup
+                    zip -r9 sileo-string-backup.zip ./sileo-string-backup
+                    echo "Backup created at /sileopirate/sileo-string-backup.zip"
+                    read -p "Press [Enter] to continue..." fackEnterKey 
+                fi
+        fi
+        echo "Blowin' Sileo down..."
+        killall Sileo
+        echo "Forcin' ye old strings to walk the plank"
+        rm -fv "$SILEOSTRINGS/Localizable.stringsdict"
+        rm -fv "$SILEOSTRINGS/Localizable.strings"
+        rm -fv "$SILEOSTRINGS/Errors.strings"
+        rm -fv "$SILEOSTRINGS/Categories.strings"
+        echo "Raidin' th' Sileo folder..."
+        cp -fv /sileopirate/data/pirate_strings/Categories.strings $SILEOSTRINGS
+        cp -fv /sileopirate/data/pirate_strings/Errors.strings $SILEOSTRINGS
+        cp -fv /sileopirate/data/pirate_strings/Localizable.strings $SILEOSTRINGS
+        cp -fv /sileopirate/data/pirate_strings/Localizable.stringsdict $SILEOSTRINGS
+        chown root:wheel $SILEOSTRINGS/Categories.strings
+        chown root:wheel $SILEOSTRINGS/Errors.strings
+        chown root:wheel $SILEOSTRINGS/Localizable.strings
+        chown root:wheel $SILEOSTRINGS/Localizable.stringsdict
+        echo "Heavin' down..."
+        rm -rfv /sileopirate/sileo-string-backup
+        echo "Aye! Sileo now be replaced with pirate speak. A round for all ye mateys!"
+        exit 1
+    else
+        exit 1
+    fi

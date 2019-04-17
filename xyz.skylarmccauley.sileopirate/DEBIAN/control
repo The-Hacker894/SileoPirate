@@ -1,0 +1,11 @@
+Package: xyz.skylarmccauley.sileopirate
+Name: SileoPirate
+Version: 0.1
+Depends: firmware (>= 11.0), org.coolstar.sileo
+Architecture: iphoneos-arm
+Description: Raid ye Sileo package manager will me Pirate Speak
+Maintainer: TheHacker
+Homepage: https://skylarmccauley.xyz/
+Depiction: http://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/
+Author: TheHacker
+Section: Tweaks

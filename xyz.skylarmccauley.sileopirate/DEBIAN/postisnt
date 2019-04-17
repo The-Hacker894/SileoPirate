@@ -1,0 +1,6 @@
+#!/bin/sh
+
+chown root:wheel /sileopirate/data/pirate_strings/Categories.strings
+chown root:wheel /sileopirate/data/pirate_strings/Errors.strings
+chown root:wheel /sileopirate/data/pirate_strings/Localizable.strings
+chown root:wheel /sileopirate/data/pirate_strings/Localizable.stringsdict
