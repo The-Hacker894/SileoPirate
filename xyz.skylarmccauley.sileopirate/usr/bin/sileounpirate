@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 clear
-VER="0.1.4"
+VER="0.1.5"
 echo "sileounpirate v$VER"
 
 SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
@@ -32,6 +32,19 @@ read -p "Would ye like to continue? [Y/N] " -n 1 -r
         fi
         unzip -o sileo-string-backup.zip
         echo "Ya har har! Ye backup be unzipped!"
+        if [ -r /sileopirate/sileo-string-backup/meta.txt ]; then
+            META=$(</sileopirate/sileo-string-backup/meta.txt)
+            echo "Backup Version: $META"
+            echo "SileoPirate Version: $VER"
+            echo "Sileo Version: $(dpkg-query -W -f='${Version}\n' org.coolstar.sileo)"
+                echo "Take note of the versions ye backup was created with."
+                read -p " Would ye like to continue? [Y/N] " -n 1 -r
+                    echo    # (optional) move to a new line
+                if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+                    exit 1;
+                fi
+            fi
+        fi
         echo "Blowin' Sileo down..."
         killall Sileo
         echo "Forcin' ye modified strings to walk the plank"

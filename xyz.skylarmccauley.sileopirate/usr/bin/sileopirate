@@ -1,7 +1,7 @@
 #!/bin/sh 
 
 clear
-VER="0.1.4"
+VER="0.1.5"
 echo "sileopirate v$VER"
 
 SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
@@ -21,6 +21,19 @@ fi
 if [ ! -d /sileopirate/sileo-string-backup ]; then
     mkdir /sileopirate/sileo-string-backup
 fi
+
+create_backup() {
+    echo "Creatin' ye backup in /sileopirate"
+    echo $VER > /sileopirate/sileo-string-backup/meta.txt
+    cp -fv "$SILEOSTRINGS/Localizable.stringsdict" /sileopirate/sileo-string-backup
+    cp -fv "$SILEOSTRINGS/Localizable.strings" /sileopirate/sileo-string-backup
+    cp -fv "$SILEOSTRINGS/Errors.strings" /sileopirate/sileo-string-backup
+    cp -fv "$SILEOSTRINGS/Categories.strings" /sileopirate/sileo-string-backup
+    echo ""
+    zip -r9 sileo-string-backup.zip ./sileo-string-backup
+    echo "Backup created at /sileopirate/sileo-string-backup.zip"
+    read -p "Press [Enter] to continue..." fackEnterKey 
+}
 cd /sileopirate
 echo "" && echo ""
 
@@ -33,14 +46,13 @@ read -p "Would ye like to continue? [Y/N] " -n 1 -r
             read -p " Would ye like to create another one? [Y/N] " -n 1 -r
                     echo    # (optional) move to a new line
                 if [[ $REPLY =~ ^[Yy]$ ]]; then
-                    echo "Creatin' ye backup in /sileopirate"
-                    cp -fv "$SILEOSTRINGS/Localizable.stringsdict" /sileopirate/sileo-string-backup
-                    cp -fv "$SILEOSTRINGS/Localizable.strings" /sileopirate/sileo-string-backup
-                    cp -fv "$SILEOSTRINGS/Errors.strings" /sileopirate/sileo-string-backup
-                    cp -fv "$SILEOSTRINGS/Categories.strings" /sileopirate/sileo-string-backup
-                    zip -r9 sileo-string-backup.zip ./sileo-string-backup
-                    echo "Backup created at /sileopirate/sileo-string-backup.zip"
-                    read -p "Press [Enter] to continue..." fackEnterKey 
+                    create_backup
+                fi
+        else
+            read -p " Would ye like to create backup? Ye don't want ya sources endin' up in Davy Jones' Locker! [Y/N] " -n 1 -r
+                    echo    # (optional) move to a new line
+                if [[ $REPLY =~ ^[Yy]$ ]]; then
+                    create_backup
                 fi
         fi
         echo "Blowin' Sileo down..."
