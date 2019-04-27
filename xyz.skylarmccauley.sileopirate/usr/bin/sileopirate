@@ -23,6 +23,7 @@ if [ ! -d /sileopirate/sileo-string-backup ]; then
 fi
 
 create_backup() {
+    rm -fv ./sileo-string-backup.zip
     echo "Creatin' ye backup in /sileopirate"
     echo $VER > /sileopirate/sileo-string-backup/meta.txt
     cp -fv "$SILEOSTRINGS/Localizable.stringsdict" /sileopirate/sileo-string-backup
@@ -41,20 +42,13 @@ echo "Aye matey! Welcome to SileoPirate! This script be replacin' ye Sileo strin
 read -p "Would ye like to continue? [Y/N] " -n 1 -r
         echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        if [ -f ./sileo-string-backup.zip ]; then
-            echo "Arrrr! A backup already exists."
-            read -p " Would ye like to create another one? [Y/N] " -n 1 -r
+
+        read -p " Would ye like to create backup? Ye don't want ya sources endin' up in Davy Jones' Locker! (This be wipin' old backups too) [Y/N] " -n 1 -r
                     echo    # (optional) move to a new line
                 if [[ $REPLY =~ ^[Yy]$ ]]; then
                     create_backup
                 fi
-        else
-            read -p " Would ye like to create backup? Ye don't want ya sources endin' up in Davy Jones' Locker! [Y/N] " -n 1 -r
-                    echo    # (optional) move to a new line
-                if [[ $REPLY =~ ^[Yy]$ ]]; then
-                    create_backup
-                fi
-        fi
+                
         echo "Blowin' Sileo down..."
         killall Sileo
         echo "Forcin' ye old strings to walk the plank"
