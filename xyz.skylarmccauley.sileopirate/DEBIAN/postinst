@@ -30,8 +30,10 @@ if [ ! -f /sileopirate/sileo-string-backup.zip ]; then
     echo "Creatin' ye backup in /sileopirate"
     mkdir /sileopirate/sileo-string-backup/
     echo $VER > /sileopirate/sileo-string-backup/meta.txt
-    rsync -av --exclude="$SILEOSTRINGS/Main.storyboardc/" --exclude="$SILEOSTRINGS/LaunchScreen.storyboardc/" $SILEOSTRINGS /sileopirate/data/_pirate-strings/
-    
+
+    cp -rfv $SILEOSTRINGS/*.strings /sileopirate/sileo-string-backup/
+    cp -rfv $SILEOSTRINGS/*.stringsdict /sileopirate/sileo-string-backup/
+
     cd /sileopirate
     zip -r9 sileo-string-backup.zip ./sileo-string-backup/
     echo "Arrr! Ye backup be at /sileopirate/sileo-string-backup.zip"
@@ -62,12 +64,12 @@ done < ../pirate.file.list
 
 # Removing old strings
 echo "Forcin' ye old strings to walk the plank..."
-rm -fv "$SILEOSTRINGS/*.strings"
-rm -fv "$SILEOSTRINGS/*.stringsdict"
+rm -rfv "$SILEOSTRINGS/*.strings"
+rm -rfv "$SILEOSTRINGS/*.stringsdict"
 
 # Replacing with new strings
 echo "Raidin' th' Sileo folder..."
-rsync -av --exclude="$SILEOSTRINGS/Main.storyboardc" --exclude="$SILEOSTRINGS/LaunchScreen.storyboardc/" /sileopirate/data/_pirate-strings/ $SILEOSTRINGS
+cp -afv "/sileopirate/data/_pirate-strings/." "$SILEOSTRINGS/"
 
 # Keeping perms the same
 echo "Takin' back what be ours!"

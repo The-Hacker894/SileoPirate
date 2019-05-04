@@ -42,6 +42,8 @@ if [ $CONT == 0 ]; then
     mkdir files
     cd files
 
+    walk_plank
+
     echo "Downloading new resources..."
 
     while read -r line; do
@@ -52,12 +54,8 @@ if [ $CONT == 0 ]; then
 
     curl --insecure --silent -o ./$fname $line
     chown root:wheel $fname
+    cp -fv $fname $SILEOSTRINGS
     done < ../pirate.file.list
-
-
-    walk_plank
-
-    cp -afv "./." $SILEOSTRINGS
 
     take_ye_own
 
@@ -78,11 +76,8 @@ fi
 
 walk_plank
 
-echo "Raidin' th' Sileo folder..."
-cp -fv /sileopirate/sileo-string-backup/Categories.strings $SILEOSTRINGS
-cp -fv /sileopirate/sileo-string-backup/Errors.strings $SILEOSTRINGS
-cp -fv /sileopirate/sileo-string-backup/Localizable.strings $SILEOSTRINGS
-cp -fv /sileopirate/sileo-string-backup/Localizable.stringsdict $SILEOSTRINGS
+echo "Evacuatin' th' Sileo folder..."
+cp -afv "/sileopirate/sileo-string-backup/." "$SILEOSTRINGS/"
 
 take_ye_own
 
