@@ -1,7 +1,7 @@
 Package: xyz.skylarmccauley.sileopirate
 Name: SileoPirate
 Version: 0.2
-Depends: firmware (>= 11.0)
+Depends: firmware (>= 11.0), curl, unzip, zip
 Architecture: iphoneos-arm
 Description: Raid ye Sileo package manager with me Pirate Speak
 Conflicts: xyz.skylarmccauley.sileopirate (<=0.1.9)
