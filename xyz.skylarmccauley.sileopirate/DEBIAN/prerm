@@ -4,6 +4,7 @@ VER="0.2"
 echo "sileopirate v$VER"
 SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
 REPO="https://github.com/The-Hacker894/SileoPirate/blob/master/"
+RAW="https://raw.githubusercontent.com/The-Hacker894/SileoPirate/master/"
 
 CONT=1
 if [ ! -f /sileopirate/sileo-string-backup.zip ]; then
@@ -30,7 +31,7 @@ if [ $CONT == 0 ]; then
     mkdir /sileopirate/temp/
     cd /sileopirate/temp/
 
-    curl --insecure --silent -o ./pirate.file.list $REPO/pirate.file.list
+    curl --insecure --silent -o ./pirate.file.list $RAW/pirate.file.list
     if [ ! -r ./file.list ]; then
         echo "file.list did not download correctly..."
         pause
