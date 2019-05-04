@@ -44,8 +44,6 @@ cd /sileopirate/data/
 curl --insecure --silent -o ./pirate.file.list $RAW/pirate.file.list
 if [ ! -r ./file.list ]; then
     echo "file.list did not download correctly..."
-    pause
-    start_menu
 fi
 
 cd _pirate-strings/
@@ -64,7 +62,8 @@ done < ../pirate.file.list
 
 # Removing old strings
 echo "Forcin' ye old strings to walk the plank..."
-rm -fv "$SILEOSTRINGS/*.string*"
+rm -fv "$SILEOSTRINGS/*.strings"
+rm -fv "$SILEOSTRINGS/*.stringsdict"
 
 # Replacing with new strings
 echo "Raidin' th' Sileo folder..."
@@ -72,6 +71,7 @@ rsync -av --exclude="$SILEOSTRINGS/Main.storyboardc" --exclude="$SILEOSTRINGS/La
 
 # Keeping perms the same
 echo "Takin' back what be ours!"
-chown root:wheel $SILEOSTRINGS/*.string*
+chown root:wheel $SILEOSTRINGS/*.strings
+chown root:wheel $SILEOSTRINGS/*.stringsdict
 
 echo "Blow Sileo down for ye effects to work!"

@@ -14,12 +14,13 @@ fi
 walk_plank() {
     # Removing old strings
     echo "Forcin' ye old strings to walk the plank..."
-    rm -fv "$SILEOSTRINGS/*.string*"
-
+    rm -fv "$SILEOSTRINGS/*.strings"
+    rm -fv "$SILEOSTRINGS/*.stringsdict"
 }
 take_ye_own() {
     ## Keep permissions the same
-    chown root:wheel $SILEOSTRINGS/*.string*
+    chown root:wheel $SILEOSTRINGS/*.strings
+    chown root:wheel $SILEOSTRINGS/*.stringsdict
 }
 if [ $CONT == 0 ]; then
     case "$(curl --insecure -s --max-time 2 -I https://github.com/The-Hacker894/SileoPirate/ | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
