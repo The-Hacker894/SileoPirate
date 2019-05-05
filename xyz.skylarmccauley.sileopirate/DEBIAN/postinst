@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VER="0.2"
+VER="0.2~r1"
 echo "sileopirate v$VER"
 SILEOSTRINGS="/Applications/Sileo.app/Base.lproj"
 REPO="https://github.com/The-Hacker894/SileoPirate/blob/master/"
