@@ -1,6 +1,7 @@
 Package: xyz.skylarmccauley.sileopirate.helper
 Name: SileoPirate Helper
-Depends: mobilesubstrate, com.hydri.sileoowo, com.hydri.sileowo
+Depends: mobilesubstrate
+Conflicts: com.hydri.sileoowo, com.hydri.sileowo
 Architecture: iphoneos-arm
 Description: Arrr! This be another landlubber to help carry out the duties of SileoPirate.
 Maintainer: TheHacker
