@@ -1,0 +1,13 @@
+Package: xyz.skylarmccauley.sileopirate.helper
+Name: SileoPirate Helper
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: Arrr! This be another landlubber to help carry out the duties of SileoPirate.
+Maintainer: TheHacker
+Author: TheHacker
+Homepage: https://skylarmccauley.xyz/
+Depiction: http://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate.helper/
+SileoDepiction: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate.helper/sileo.json
+Icon: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/icon.png
+Section: Tweaks
+Version: 1.0   
