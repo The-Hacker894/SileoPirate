@@ -3,6 +3,7 @@
 chmod 0755 xyz.skylarmccauley.sileopirate/DEBIAN
 chmod 0555 xyz.skylarmccauley.sileopirate/DEBIAN/postinst
 chmod 0555 xyz.skylarmccauley.sileopirate/DEBIAN/prerm
+chmod a+x xyz.skylarmccauley.sileopirate/usr/bin/repirate
 
 chmod 0755 xyz.skylarmccauley.sileopirate.helper/DEBIAN
 

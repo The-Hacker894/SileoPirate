@@ -77,3 +77,5 @@ chown root:wheel $SILEOSTRINGS/*.strings
 chown root:wheel $SILEOSTRINGS/*.stringsdict
 
 echo "Blow Sileo down for ye effects to work!"
+echo ""
+echo "If th' installation did not work, run repirate in terminal"
