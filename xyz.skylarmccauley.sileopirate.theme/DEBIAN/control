@@ -1,0 +1,13 @@
+Package: xyz.skylarmccauley.sileopirate.theme
+Name: SileoPirate Theme
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Ya har har! Expand upon the pirate speak of SileoPirate by installing this Anemone Theme!
+Conflicts: com.hydri.sileoowo, com.hydri.sileowo
+Maintainer: TheHacker
+Homepage: https://skylarmccauley.xyz/
+Depiction: http://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate.theme/
+SileoDepiction: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/sileo.json
+Icon: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/icon.png
+Author: TheHacker
+Section: Themes
