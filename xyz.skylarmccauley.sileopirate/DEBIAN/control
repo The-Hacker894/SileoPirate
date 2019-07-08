@@ -7,8 +7,8 @@ Description: Raid ye Sileo package manager with me Pirate Speak
 Conflicts: xyz.skylarmccauley.sileopirate (<=0.1.9), com.hydri.sileoowo, com.hydri.sileowo
 Maintainer: TheHacker
 Homepage: https://skylarmccauley.xyz/
-Depiction: http://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/
-SileoDepiction: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/sileo.json
-Icon: https://skylarmccauley.xyz/hacked-repo/depic/xyz.skylarmccauley.sileopirate/icon.png
+Depiction: http://apt.skylarmccauley.xyz/depic/xyz.skylarmccauley.sileopirate/
+SileoDepiction: https://apt.skylarmccauley.xyz/depic/xyz.skylarmccauley.sileopirate/sileo.json
+Icon: https://apt.skylarmccauley.xyz/depic/xyz.skylarmccauley.sileopirate/icon.png
 Author: TheHacker
 Section: Tweaks
